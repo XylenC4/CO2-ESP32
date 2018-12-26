@@ -5,7 +5,7 @@ Arduino CO2 and Temperature logger based on BOSCH BME280 and Winsen MH-Z19B
 ![shematic](Images/shematic.PNG)
 
 
-# User Interface
+## User Interface
 General Interface
 
 ![shematic](Images/FrontUserInterface.png)
