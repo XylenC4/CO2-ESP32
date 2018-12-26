@@ -9,7 +9,7 @@ Arduino CO2 and Temperature logger based on BOSCH BME280 and Winsen MH-Z19B
 ## Parts needed
 - DOIT! ESP32 (any ESP32 should work, might not fit in the case)
 - OLED 0.97" 128x64 Display
-- MH-z19B CO2 sensor
+- MH-Z19B CO2 sensor
 - BME280 sensor
 
     -> I'll had a 5V compatible version
