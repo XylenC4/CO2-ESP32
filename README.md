@@ -10,6 +10,6 @@ General Interface
 
 ![shematic](Images/FrontUserInterface.png)
 
-###Log
+### Log
 
 ![shematic](Images/FronUserLog.png)
