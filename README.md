@@ -1,15 +1,15 @@
 # CO2-ESP32
 Arduino CO2 and Temperature logger based on BOSCH BME280 and Winsen MH-Z19B
 
-# Shematics
+## Shematics
 ![shematic](Images/shematic.PNG)
 
 
-## User Interface
+### User Interface
 General Interface
 
 ![shematic](Images/FrontUserInterface.png)
 
-Log
+###Log
 
 ![shematic](Images/FronUserLog.png)
