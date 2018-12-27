@@ -19,6 +19,7 @@ Adafruit_BME280 bme; // I2C
 
 float fBME280Temperature, fBME280Pressure, fBME280Humidity, fBME280AbsoluteHumidity, fBME280CorrectedRelativeHumidity;
 float fBME280OriginalTemperature, fBME280OriginalHumidity, fBME280OriginalPressure;
+unsigned long lBME280LoopPreviousTime = 0;
 
 void setup_BME280() {
     bool status;
@@ -36,10 +37,18 @@ void setup_BME280() {
                     Adafruit_BME280::SAMPLING_X1,   // temperature
                     Adafruit_BME280::SAMPLING_X1, // pressure
                     Adafruit_BME280::SAMPLING_X1,   // humidity
-                    Adafruit_BME280::FILTER_OFF );                   
+                    Adafruit_BME280::FILTER_OFF );   
+  // Set Time
+  lBME280LoopPreviousTime = millis();                
 }
 
 void loop_BME280() { 
+  unsigned long lLoopActual = millis();
+  unsigned long lLoopDelayTime = (lLoopActual - lBME280LoopPreviousTime) / 1000;
+
+  if(lLoopDelayTime > DELAY_TIME_BETWEEN_BME280_UPDATE) {
+    OledDisplayLogAdd("BME280 Update", 0);
+    lBME280LoopPreviousTime = millis();
     bme.takeForcedMeasurement(); // has no effect in normal mode
     //Uncompensated values from sensor
     fBME280OriginalTemperature = bme.readTemperature();
@@ -58,6 +67,7 @@ void loop_BME280() {
       fBME280Pressure = fBME280OriginalPressure;
       fBME280Humidity = fBME280OriginalHumidity;
     }
+  }
 }
 
 //https://forum.arduino.cc/index.php?topic=420975.0

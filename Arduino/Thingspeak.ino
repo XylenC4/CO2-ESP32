@@ -7,17 +7,15 @@ extern String LocalWifiIP;
 unsigned long lThingspeakLoopPreviousTime = 0;
 
 void setup_Thingspeak(){ 
-  Connect_to_Wifi();
-  // Set Time
-  lThingspeakLoopPreviousTime = millis();
+  Connect_to_Wifi(); 
 }
 
 void loop_Thingspeak(){
   static unsigned int SensorLoop = 0;
-  unsigned long lThingspeakLoopActual = millis();
-  unsigned long lThingspeakLoopDelayTime = (lThingspeakLoopActual - lThingspeakLoopPreviousTime) / 1000;
+  unsigned long lLoopActual = millis();
+  unsigned long lLoopDelayTime = (lLoopActual - lThingspeakLoopPreviousTime) / 1000;
 
-  if(lThingspeakLoopDelayTime > DELAY_TIME_BETWEEN_THINGSPEAK_UPDATE) {
+  if(lLoopDelayTime > DELAY_TIME_BETWEEN_THINGSPEAK_UPDATE) {
     Send_Data();
     lThingspeakLoopPreviousTime = millis();
   }

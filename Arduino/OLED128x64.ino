@@ -22,10 +22,11 @@ void OledDisplayLogAdd(String sValue, int iDelay) {
     }
     sDataLines[OLED_LOG_LINES-1] = sValue;
   }
-  OledDisplayLog();
-  delay(iDelay);
+  if(iDelay>0) {
+    OledDisplayLog();
+    delay(iDelay);
+  }
 }
-
 
 void OledDisplayLogEditCurrent(String sValue, int iDelay) {
   sDataLines[iActDataLine-1] = sValue;
@@ -33,7 +34,6 @@ void OledDisplayLogEditCurrent(String sValue, int iDelay) {
   //OledDisplayLogAdd(String("Act:") + iActDataLine + String(";") + sValue,500);
   delay(iDelay);
 }
-
 
 void OledDisplayLog(){
   OledDisplayHeader("                  Log");
@@ -46,7 +46,6 @@ void OledDisplayLog(){
 void OledDisplayLogClear() {
   OledDisplayHeader("                  Log");
   
-
   for(int i=0;i<OLED_LOG_LINES;i++) {
     sDataLines[i] = "";
   }
